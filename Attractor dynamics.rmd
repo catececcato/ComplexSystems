@@ -1,0 +1,282 @@
+---
+title: "Complex systems analysis of EEG data - Module 5"
+author: "Ethel Pruss, Anita Vrins, Jos Prinsen, Caterina Ceccato"
+date: "3/17/2023"
+output: pdf_document
+---
+
+# Applying attractor dynamics methods to EEG data collected from a storytelling task involving a social robot
+
+## Dataset
+
+The dataset used was collected by the authors in collaboration with another student during experiments conducted at Tilburg University in fall 2022. The dataset contains EEG data from 40 participants, divided in two conditions. It was a within-participant study, so for each participant data from both conditions are available. Every datafile includes EEG data from 8 channels (Fz, C3, Cz, C4, Pz, PO7, Oz, PO8) collected from a 10 minutes interaction. The conditions refer to the experimental setup of the study, and will not be discussed in depth in here.
+
+## Preprocessing steps applied prior to the following analysis
+
+The data was collected through Matlab Simulink, therefore it was initially stored in .mat files. The files have been first converted into .csv and then to .fif to be able to work with the mne module for python. After a first inspection of the data, we noticed that it was very noisy, and we decided it would be better to preprocess it through EEGLAB, to make sure we could get a clear idea of the steps that were applied. Our preprocessing pipeline consisted in
+
+1. Loading the data (alredy notch-filtered at 50 Hz)
+2. Applying a bandpass filter of 0.5-30 Hz. We decided to cut out the higher frequencies because muscular movement is often highly reflected in gamma.
+3. Changing the sampling rate. This was necessary for the next step. The sampling rate of the headset used was 250, which was changed to 256.
+4. Applying ASR over all channels to reject data. ASR is an effective method for removing artifacts from EEG data. It uses principal component analysis (PCA) to identify and reject data contaminated by artifacts such as eye blinks, eye movements, and muscle activity. During this step, some channels were removed and then automatically reconstructed.
+
+## Power spectral density
+
+After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the aplha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+```
+
+## Loading the data
+
+The following analysis methods will be demonstrated on one participant out of the dataset. To adjust it to other participants, only the loaded file needs to be changed. In the example code, we will be looking at participant number 10 in the adaptive condition.
+
+```{r, echo=TRUE}
+filename <- read.csv("data/P10Engagement_Raw.csv")
+```
+
+## Loading libraries
+
+```{r, echo=TRUE}
+library(Hmisc)
+library(ggplot2)
+library(grid)
+library(randtests)
+library(tseries)
+```
+
+## Frontal EEG data
+
+```{r, echo=TRUE}
+filename$Frontal_lag1 <- Lag(filename$Frontal, 1)
+filename$Frontal_lead1 <- Lag(filename$Frontal, -1)
+filename$Frontal_change1 <- (filename$Frontal_lead1 - filename$Frontal_lag1)/2
+```
+
+## Cenrtal EEG data
+
+```{r, echo=TRUE}
+filename$Central_lag1 <- Lag(filename$Central, 1)
+filename$Central_lead1 <- Lag(filename$Central, -1)
+filename$Central_change1 <- (filename$Central_lead1 - filename$Central_lag1)/2
+```
+
+## Parietal EEG data
+
+```{r, echo=TRUE}
+filename$Parietal_lag1 <- Lag(filename$Parietal, 1)
+filename$Parietal_lead1 <- Lag(filename$Parietal, -1)
+filename$Parietal_change1 <- (filename$Parietal_lead1 - filename$Parietal_lag1)/2
+```
+
+## EEG data from all regions
+
+```{r, echo=TRUE}
+filename$Total_lag1 <- Lag(filename$Total, 1)
+filename$Total_lead1 <- Lag(filename$Total, -1)
+filename$Total_change1 <- (filename$Total_lead1 - filename$Total_lag1)/2
+
+```
+
+
+## Creating time series variables
+
+```{r, echo=TRUE}
+filename$Time_lag1 <- Lag(filename$X, 1)
+filename$Time_lead1 <- Lag(filename$X, -1)
+filename$Time_change1 <- (filename$Time_lag1- filename$Time_lead1)/2
+```
+
+## Plotting the frontal EEG data
+
+```{r, echo=TRUE}
+plot(filename$Frontal_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+
+ggplot(data=filename,aes(x=X + Time_change1,y=Frontal + Frontal_change1))+
+  geom_segment(aes(xend=X + Time_change1,yend=Frontal + Frontal_change1),arrow=arrow(length=unit(.2,"cm")))+
+  stat_density2d(aes(colour=..level..))+
+  labs(list(title="Participant 1 Vector Density Plot", x= "Time", y = "EEG Engagement"))
+
+```
+
+## Plotting a linear predictor for the frontal data
+
+```{r, echo=TRUE}
+plot(y = filename$Frontal_change1, x = filename$Frontal)
+model1 <- lm(formula = Frontal_change1 ~ Frontal, data = filename )
+plot(model1)
+summary(model1)
+
+```
+
+
+## Plotting the central EEG data
+
+```{r, echo=TRUE}
+plot(filename$Central_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+
+ggplot(data=filename,aes(x=X + Time_change1,y=Central + Central_change1))+
+  geom_segment(aes(xend=X + Time_change1,yend=Central + Central_change1),arrow=arrow(length=unit(.2,"cm")))+
+  stat_density2d(aes(colour=..level..))+
+  labs(list(title="Participant 1 Vector Density Plot", x= "Time", y = "EEG Engagement"))
+
+```
+
+
+## Plotting a linear predictor for the central data
+
+```{r, echo=TRUE}
+plot(y = filename$Central_change1, x = filename$Central)
+model1 <- lm(formula = Central_change1 ~ Central, data = filename )
+plot(model1)
+summary(model1)
+
+```
+
+
+
+## Plotting the parietal EEG data
+
+```{r, echo=TRUE}
+plot(filename$Parietal_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+
+ggplot(data=filename,aes(x=X + Time_change1,y=Parietal + Parietal_change1))+
+  geom_segment(aes(xend=X + Time_change1,yend=Parietal + Parietal_change1),arrow=arrow(length=unit(.2,"cm")))+
+  stat_density2d(aes(colour=..level..))+
+  labs(list(title="Participant 1 Vector Density Plot", x= "Time", y = "EEG Engagement"))
+
+```
+
+
+## Plotting a linear predictor for the parietal data
+
+```{r, echo=TRUE}
+plot(y = filename$Parietal_change1, x = filename$Central)
+
+model1 <- lm(formula = Parietal_change1 ~ Parietal, data = filename )
+plot(model1)
+summary(model1)
+
+
+```
+
+## Plotting all regions
+
+```{r, echo=TRUE}
+plot(filename$Total_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+
+ggplot(data=filename,aes(x=X + Time_change1,y=Total + Total_change1))+
+  geom_segment(aes(xend=X + Time_change1,yend=Total + Total_change1),arrow=arrow(length=unit(.2,"cm")))+
+  stat_density2d(aes(colour=..level..))+
+  labs(list(title="Participant 1 Vector Density Plot", x= "Time", y = "EEG Engagement"))
+
+```
+
+## Plotting the linear predictor for all regions
+
+```{r, echo=TRUE}
+plot(y = filename$Total_change1, x = filename$Total)
+
+model1 <- lm(formula = Total_change1 ~ Total, data = filename )
+plot(model1)
+summary(model1)
+
+```
+
+## Bartels rank tests per region
+
+```{r, echo=TRUE}
+bartels.rank.test(filename$Frontal, alternative = "two.sided")
+
+
+bartels.rank.test(filename$Central, alternative = "two.sided")
+
+
+bartels.rank.test(filename$Parietal, alternative = "two.sided")
+
+bartels.rank.test(filename$Total, alternative = "two.sided")
+
+```
+
+
+## Calculating auto-correlation for each region
+
+```{r, echo=TRUE}
+pacf(na.exclude(filename$Frontal),lag.max = 1000)
+pacf(na.exclude(filename$Central),lag.max = 1000)
+pacf(na.exclude(filename$Parietal),lag.max = 1000)
+pacf(na.exclude(filename$Total),lag.max = 1000)
+
+```
+
+
+## KPSS tests for each region
+
+```{r, echo=TRUE}
+kpss.test(na.exclude(filename$Frontal), lshort=TRUE,
+          null="Level")
+
+
+kpss.test(na.exclude(filename$Central), lshort=TRUE,
+          null="Level")
+
+
+kpss.test(na.exclude(filename$Parietal), lshort=TRUE,
+          null="Level")
+
+kpss.test(na.exclude(filename$Total), lshort=TRUE,
+          null="Level")
+```
+
+
+## Change point analysis per region
+
+### Frontal
+
+```{r, echo=TRUE}
+ts <- matrix(na.exclude(filename$Frontal))
+
+e.out <- ecp::e.divisive(ts, R=500, sig.lvl=.002)
+df.e <- length(which(e.out$p.values<.002))
+e.out$estimates
+df.e
+```
+
+
+### Central
+
+```{r, echo=TRUE}
+ts <- matrix(na.exclude(filename$Central))
+
+e.out <- ecp::e.divisive(ts, R=500, sig.lvl=.002)
+df.e <- length(which(e.out$p.values<.002))
+e.out$estimates
+df.e
+```
+
+
+### Parietal
+```{r, echo=TRUE}
+ts <- matrix(na.exclude(filename$Parietal))
+
+e.out <- ecp::e.divisive(ts, R=500, sig.lvl=.002)
+df.e <- length(which(e.out$p.values<.002))
+e.out$estimates
+df.e
+```
+
+
+### Total
+
+```{r, echo=TRUE}
+ts <- matrix(na.exclude(filename$Total))
+
+e.out <- ecp::e.divisive(ts, R=500, sig.lvl=.002)
+df.e <- length(which(e.out$p.values<.002))
+e.out$estimates
+df.e
+```
+
+
