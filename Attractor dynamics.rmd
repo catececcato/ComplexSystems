@@ -15,10 +15,10 @@ The dataset used was collected by the authors in collaboration with another stud
 
 The data was collected through Matlab Simulink, therefore it was initially stored in .mat files. The files have been first converted into .csv and then to .fif to be able to work with the mne module for python. After a first inspection of the data, we noticed that it was very noisy, and we decided it would be better to preprocess it through EEGLAB, to make sure we could get a clear idea of the steps that were applied. Our preprocessing pipeline consisted in
 
-1. Loading the data (alredy notch-filtered at 50 Hz)
+1. Loading the data (already notch-filtered at 50 Hz)
 2. Applying a bandpass filter of 0.5-30 Hz. We decided to cut out the higher frequencies because muscular movement is often highly reflected in gamma.
 3. Changing the sampling rate. This was necessary for the next step. The sampling rate of the headset used was 250, which was changed to 256.
-4. Applying ASR over all channels to reject data. ASR is an effective method for removing artifacts from EEG data. It uses principal component analysis (PCA) to identify and reject data contaminated by artifacts such as eye blinks, eye movements, and muscle activity. During this step, some channels were removed and then automatically reconstructed.
+4. Applying Artifact Subspace Reconstruction (ASR) over all channels to reject data. ASR is an effective method for removing artifacts from EEG data. It uses principal component analysis (PCA) to identify and reject data contaminated by artifacts such as eye blinks, eye movements, and muscle activity. During this step, some channels were removed and then automatically reconstructed.
 
 ## Power spectral density
 
@@ -92,7 +92,7 @@ filename$Time_change1 <- (filename$Time_lag1- filename$Time_lead1)/2
 ## Plotting the frontal EEG data
 
 ```{r, echo=TRUE}
-plot(filename$Frontal_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+plot(filename$Frontal_change1,type='l', xlab = "Time", ylab =" Change in EEG Engagement")
 
 ggplot(data=filename,aes(x=X + Time_change1,y=Frontal + Frontal_change1))+
   geom_segment(aes(xend=X + Time_change1,yend=Frontal + Frontal_change1),arrow=arrow(length=unit(.2,"cm")))+
@@ -115,7 +115,7 @@ summary(model1)
 ## Plotting the central EEG data
 
 ```{r, echo=TRUE}
-plot(filename$Central_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+plot(filename$Central_change1,type='l', xlab = "Time", ylab =" Change in EEG Engagement")
 
 ggplot(data=filename,aes(x=X + Time_change1,y=Central + Central_change1))+
   geom_segment(aes(xend=X + Time_change1,yend=Central + Central_change1),arrow=arrow(length=unit(.2,"cm")))+
@@ -140,7 +140,7 @@ summary(model1)
 ## Plotting the parietal EEG data
 
 ```{r, echo=TRUE}
-plot(filename$Parietal_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+plot(filename$Parietal_change1,type='l', xlab = "Time", ylab =" Change in EEG Engagement")
 
 ggplot(data=filename,aes(x=X + Time_change1,y=Parietal + Parietal_change1))+
   geom_segment(aes(xend=X + Time_change1,yend=Parietal + Parietal_change1),arrow=arrow(length=unit(.2,"cm")))+
@@ -165,7 +165,7 @@ summary(model1)
 ## Plotting all regions
 
 ```{r, echo=TRUE}
-plot(filename$Total_change1,type='l', xlab = "Time in seconds", ylab =" Change in EEG Engagement")
+plot(filename$Total_change1,type='l', xlab = "Time", ylab =" Change in EEG Engagement")
 
 ggplot(data=filename,aes(x=X + Time_change1,y=Total + Total_change1))+
   geom_segment(aes(xend=X + Time_change1,yend=Total + Total_change1),arrow=arrow(length=unit(.2,"cm")))+
