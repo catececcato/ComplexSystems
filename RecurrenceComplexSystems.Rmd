@@ -1,0 +1,230 @@
+---
+title: "RecurrenceAnalysis"
+author: "Caterina Ceccato"
+date: "2023-04-28"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+The aim of this notebook is to investigate the autorecurrence of our data about the EEG engagement index averaged over channels for each participant. In addition, we would like to investigate whether a higher autorecurrence corresponds to a higher test score in the knowledge test administered after the experiment, concerning what was explained during the experiment.
+
+Before investigating the autorecurrence, a basic phase space reconstruction was performed, in order to build the basis for the following analysis. 
+```{r}
+#################insert data here ########################
+library(rqapp)
+library(nonlinearTseries)
+library(tseriesChaos)
+df <- read.csv("C:/Users/caty-/Downloads/engagement_index_Adaptive_averaged0.csv")
+print(df)
+
+# Remove the square brackets from the string using gsub
+my_string <- gsub("\\[|\\]", "", df$EngagementIndex)
+#print(my_string)
+
+
+my_numbers <- as.numeric(unlist(regmatches(my_string, gregexpr("\\d+\\.?\\d*", my_string))))
+
+
+tau.ami <- timeLag(df$EngagementIndex[1:25000], technique = "ami", lag.max = 100, do.plot = T)
+emb.dim = estimateEmbeddingDim(df$EngagementIndex[1:25000], time.lag = tau.ami, max.embedding.dim = 20)
+rqa.analysis = rqapp::rqa(df$EngagementIndex[1:25000], df$EngagementIndex[1:25000], embed = 10, normalize = 2, rescale = 0,mindiagline= 2, minvertline = 2,radius = 0.7, t_win= .0001, recpt = FALSE)
+rqa.analysis2 = rqapp::rqa(df$EngagementIndex[25000: 51728], df$EngagementIndex[25000: 51728], embed = 10, normalize = 2, rescale = 0,mindiagline= 2, minvertline = 2,radius = 0.7, t_win= .0001, recpt = FALSE)
+
+
+
+tau.acf <- timeLag(df$EngagementIndex[1:25000], technique = "acf", lag.max = 100, do.plot = T)
+
+tau.acf
+tau.ami <- timeLag(df$EngagementIndex[1:25000], technique = "ami", lag.max = 100, do.plot = T)
+tau.ami
+
+
+fnn.out = false.nearest(df$EngagementIndex[1:25000], m = 20, d = tau.ami, t = 50, eps = sd(df$EngagementIndex[1:25000])/10 )
+plot(fnn.out)
+
+
+
+emb.dim = estimateEmbeddingDim(df$EngagementIndex[1:25000], time.lag = tau.ami, max.embedding.dim = 20)
+
+print(emb.dim)
+
+
+EITaken.takens <- buildTakens(df$EngagementIndex[1:25000],emb.dim,tau.ami)
+head(EITaken.takens)
+plot(EITaken.takens[,1],EITaken.takens[,2],type='l')
+plot(EITaken.takens[,3],EITaken.takens[,4],type='l')
+plot(EITaken.takens[,5],EITaken.takens[,6],type='l')
+plot(EITaken.takens[,7],EITaken.takens[,8],type='l')
+plot(EITaken.takens[,1],EITaken.takens[,8],type='l')
+plot(EITaken.takens[,2],EITaken.takens[,10],type='l')
+
+
+rqa.analysis = rqapp::rqa(df$EngagementIndex[1:25000], df$EngagementIndex[1:25000], embed = 10, normalize = 2, rescale = 0,mindiagline= 2, minvertline = 2,radius = 0.7, t_win= .0001, recpt = FALSE)
+
+rqa.analysis$rqa
+
+
+rqa.analysis2 = rqapp::rqa(df$EngagementIndex[25000: 51728], df$EngagementIndex[25000: 51728], embed = 10, normalize = 2, rescale = 0,mindiagline= 2, minvertline = 2,radius = 0.7, t_win= .0001, recpt = FALSE)
+
+rqa.analysis2$rqa
+
+```
+The analysis with the whole signal was taking too long, so we initially investigated only the first half of the samples from the adaptive condition, for one participant. We extracted information about the optimal tau (using AMI, because it is non linear and fits our data better) and embedding dimensions. We then plotted the phase space reconstruction. 
+
+
+In the following section, we applied the methods tested above to all the data, except the phase space reconstruction plots. First, the data from the adaptive condition was considered. tau and embedding dimensions were calculated for each participant, first for the first half and then for the second half. Then, Recurrence quantification analysis (RQA) was performed, and the results were stored in a list. The list contains the results of the first half and the results of the second half for each participant.
+
+
+This cell takes hours to run!!!
+```{r}   
+
+
+# Set the path to the directory containing the CSV files
+path <- "C:/Users/caty-/Downloads/Temp"
+
+# Initialize the list to hold the final results
+FinalAnalysis <- list()
+
+# Loop through each CSV file
+for (i in 1:40) {
+  # Load the CSV file
+  filename <- paste0(path, "/", i, ".csv")
+  df <- read.csv(filename)
+  
+  # Run the analysis code
+  tau.ami <- timeLag(df$EngagementIndex[1:(nrow(df)/2)], technique = "ami", lag.max = 100, do.plot = T)
+  emb.dim <- estimateEmbeddingDim(df$EngagementIndex[1:(nrow(df)/2)], time.lag = tau.ami, max.embedding.dim = 20)
+  rqa.analysis <- rqapp::rqa(df$EngagementIndex[1:(nrow(df)/2)], df$EngagementIndex[1:(nrow(df)/2)], embed = emb.dim, normalize = 2, rescale = 0, mindiagline = 2, minvertline = 2, radius = 0.7, t_win = 0.0001, recpt = FALSE)
+  
+  tau.ami2 <- timeLag(df$EngagementIndex[(nrow(df)/2+1): nrow(df)], technique = "ami", lag.max = 100, do.plot = T)
+  emb.dim2 <- estimateEmbeddingDim(df$EngagementIndex[(nrow(df)/2+1):nrow(df)], time.lag = tau.ami2, max.embedding.dim = 20)
+  rqa.analysis2 <- rqapp::rqa(df$EngagementIndex[(nrow(df)/2+1):nrow(df)], df$EngagementIndex[(nrow(df)/2+1):nrow(df)], embed = emb.dim2, normalize = 2, rescale = 0, mindiagline = 2, minvertline = 2, radius = 0.7, t_win = 0.0001, recpt = FALSE)
+  
+  # Append the results to the list
+  FinalAnalysis[[i]] <- list(rqa.analysis = rqa.analysis, rqa.analysis2 = rqa.analysis2)
+}
+
+
+
+
+
+
+```
+
+The same procedure was applied to the random dataset
+
+
+This cell takes hours to run!!!
+```{r}   
+
+
+# Set the path to the directory containing the CSV files
+path2 <- "C:/Users/caty-/Downloads/Temp2"
+
+# Initialize the list to hold the final results
+FinalAnalysis2 <- list()
+
+# Loop through each CSV file
+for (i in 1:39) {
+  # Load the CSV file
+  filename2 <- paste0(path2, "/", i, ".csv")
+  df2 <- read.csv(filename2)
+  
+  # Run the analysis code
+  tau.ami <- timeLag(df2$EngagementIndex[1:(nrow(df2)/2)], technique = "ami", lag.max = 100, do.plot = T)
+  emb.dim <- estimateEmbeddingDim(df2$EngagementIndex[1:(nrow(df2)/2)], time.lag = tau.ami, max.embedding.dim = 20)
+  rqa.analysis <- rqapp::rqa(df2$EngagementIndex[1:(nrow(df2)/2)], df2$EngagementIndex[1:(nrow(df2)/2)], embed = emb.dim, normalize = 2, rescale = 0, mindiagline = 2, minvertline = 2, radius = 0.7, t_win = 0.0001, recpt = FALSE)
+  
+  tau.ami2 <- timeLag(df2$EngagementIndex[(nrow(df2)/2+1): nrow(df2)], technique = "ami", lag.max = 100, do.plot = T)
+  emb.dim2 <- estimateEmbeddingDim(df2$EngagementIndex[(nrow(df2)/2+1):nrow(df2)], time.lag = tau.ami2, max.embedding.dim = 20)
+  rqa.analysis2 <- rqapp::rqa(df2$EngagementIndex[(nrow(df2)/2+1):nrow(df2)], df$EngagementIndex[(nrow(df2)/2+1):nrow(df2)], embed = emb.dim2, normalize = 2, rescale = 0, mindiagline = 2, minvertline = 2, radius = 0.7, t_win = 0.0001, recpt = FALSE)
+  
+  # Append the results to the list
+  FinalAnalysis2[[i]] <- list(rqa.analysis = rqa.analysis, rqa.analysis2 = rqa.analysis2)
+}
+
+
+
+
+
+
+```
+
+The recurrence rate was extracted from each participant and stored in a list, for both the first and second half. The two lists were then added together to get an overall score over the interaction for each participant.
+
+
+```{r}
+
+temp1 <- FinalAnalysis[1]
+temp1[[1]]$rqa.analysis$rqa$rr
+temp1[[1]]$rqa.analysis2$rqa$rr
+
+recurrences_firsthalf = list()
+
+for (i in 1:38) {
+  dat = FinalAnalysis[i]
+  rec = dat[[1]]$rqa.analysis$rqa$rr
+  recurrences_firsthalf[i] <- rec 
+}
+
+
+
+recurrences_secondhalf = list()
+for (i in 1:38) {
+  dat = FinalAnalysis[i]
+  rec = dat[[1]]$rqa.analysis2$rqa$rr
+  recurrences_secondhalf[i] <- rec 
+}
+
+bigrecurrencelist_ad <- Map("+", recurrences_firsthalf, recurrences_secondhalf)
+```
+
+The data about the test scores was loaded, and a correlation plot between the list with the recurrence scores and the test scores was performed.
+```{r}
+
+scores <- read.csv("C:/Users/caty-/Downloads/totalscores.csv")
+
+scores_samelength <- scores[-c(1,40),]
+
+
+bigrecurrencelist_ad_vec <- unlist(bigrecurrencelist_ad)
+
+correlation <- cor(scores_samelength$adaptive,bigrecurrencelist_ad_vec)
+
+plot(scores_samelength$adaptive, bigrecurrencelist_ad_vec, xlab = "Test Scores", ylab="Recurrence score", main = paste0("Correlation plot Adaptive (cor = ", round(correlation, 2), ")"))
+```
+The plot shows that there does not seem to be a correlation between the two components.
+
+The same procedure was performed for the random dataset, and the results were similar
+```{r}
+
+recurrences_firsthalf_rand = list()
+
+for (i in 1:38) {
+  dat = FinalAnalysis2[i]
+  rec = dat[[1]]$rqa.analysis$rqa$rr
+  recurrences_firsthalf_rand[i] <- rec 
+}
+
+
+
+recurrences_secondhalf_rand = list()
+for (i in 1:38) {
+  dat = FinalAnalysis2[i]
+  rec = dat[[1]]$rqa.analysis2$rqa$rr
+  recurrences_secondhalf_rand[i] <- rec 
+}
+
+bigrecurrencelist_rand <- Map("+", recurrences_firsthalf_rand, recurrences_secondhalf_rand)
+```
+
+```{r}
+bigrecurrencelist_rand_vec <- unlist(bigrecurrencelist_rand)
+
+correlation_rand <- cor(scores_samelength$random,bigrecurrencelist_rand_vec)
+
+plot(scores_samelength$random, bigrecurrencelist_rand_vec, xlab = "Test Scores", ylab="Recurrence score", main = paste0("Correlation plot Random (cor = ", round(correlation_rand, 2), ")"))
+
+```
