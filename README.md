@@ -60,9 +60,9 @@ The following questions are addressed:
 - Does the metric of phase synchrony we choose affect whether there is a significant difference or not?
 - Does connectivity look different in different frequency bands or in different regional groupings?
 
-## [Entry 6 - Fractals]
+## [Entry 6 - Fractals](Portfolio%20Entries%20(pdf)/)
 
-## [Entry 7 - Entropy]
+## [Entry 7 - Entropy](Portfolio%20Entries%20(pdf)/)
 
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
