@@ -25,9 +25,7 @@ This entry investigates the temporal signature as well as stationarity of the EE
 The following questions are adressed: 
 
 - Section 1: What are the temporal signatures of the signal?
-
 - Section 2: Are the EEG Engagement Index time series stationary?
-
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
 ## [Entry 2 - Phase Space Reconstruction](Portfolio%20Entries%20(pdf)/PhaseSpaceReconstruction.pdf)
@@ -36,7 +34,8 @@ An extensive analysis on how to calculate tau and embedding dimension is done, w
 
 ## [Entry 3 - Recurrence Quantification Analysis](Portfolio%20Entries%20(pdf)/)
 This entry explores Recurrence Quantification analysis for EEG data over different epochs.
-The following methods are explored
+
+The following methods are explored:
 - RQA of the average over channels, for each epoch
 - CRQA of the average channels for 4 pairs of epochs
 - mdCRQA of all the channels for 4 pairs of epochs
@@ -46,24 +45,19 @@ This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data
 
 The following questions are adressed: 
 
-- Section 1: Are the raw EEG data and recall score time series stationary? 
-
-- Section 2: What is the optimal embedding dimension for our EEG data?
-
-- Section 3: How does increasing tp (time points in the future for prediction) affect simplex projection results for EEG data?
-
-- Section 4: What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
+- Are the raw EEG data and recall score time series stationary? 
+- What is the optimal embedding dimension for our EEG data?
+- How does increasing tp (time points in the future for prediction) affect simplex projection results for EEG data?
+- What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
 ## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(pdf)/)
 This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
 
-- Section 1: Is there a difference in connectivity between electrodes based on the experiment condition?
-
-- Section 2: Does the metric of phase synchrony we choose affect whether there is a significant difference or not?
-
-- Section 3: Does connectivity look different in different frequency bands or in different regional groupings?
+- Is there a difference in connectivity between electrodes based on the experiment condition?
+- Does the metric of phase synchrony we choose affect whether there is a significant difference or not?
+- Does connectivity look different in different frequency bands or in different regional groupings?
 
 ## [Entry 6 - Fractals]
 
