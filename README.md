@@ -20,7 +20,7 @@ After these steps, we continued our analysis of the data in python. We calculate
 # Modules
 
 ## [Module 2 - Temporal Dynamics of the EEG Engagement Index ](Module2.ipynb)
-This module investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
+This entry investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
 
 The following questions are adressed: 
 
@@ -34,10 +34,21 @@ The following questions are adressed:
 
 ## [Module 7 - interesting stuff]
 
-## [Module 8 - interesting stuff]
+## [Module 8 - Empirical Dynamic Modeling ]
+This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
+
+The following questions are adressed: 
+
+- Section 1: Are the signals stationary? (similarly to module 2, although we are looking at raw signal not the EEG Engagement Index here + recall scores)
+
+- Section 2: What is the optimal embedding dimension for our EEG data?
+
+- Section 3: How does increasing tp (time points in the future for prediction) affect simplex projection results for EEG data?
+
+- Section 4: What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
 ## [Module 9 - Correlation in EEG Data]
-This module investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
+This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
 
