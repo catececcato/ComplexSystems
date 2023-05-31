@@ -12,10 +12,10 @@ Our preprocessing pipeline consisted in
 3) Changing the sampling rate. This was necessary for the next step. The sampling rate of the headset used was 250, which was changed to 256.
 4) Applying Artifact Subspace Reconstruction (ASR) over all channels to reject data. ASR is an effective method for removing artifacts from EEG data. It uses principal component analysis (PCA) to identify and reject data contaminated by artifacts such as eye blinks, eye movements, and muscle activity. During this step, some channels were removed and then automatically reconstructed.
 
-
-# Power Spectral Density
-
 After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the alpha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
+
+# Alternative data processing
+For some analyses the same data has been formatted in a different way. Epochs of EEG data based on when certain information were given in the story telling task were extracted, and the score in the final test relative to that information was stored. This type of formatting allows for a better analysis over time and for a possible comparison between EEG data and final test score.
 
 # Portfolio Entries
 
