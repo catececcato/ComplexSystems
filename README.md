@@ -30,7 +30,7 @@ The following questions are adressed:
 
 ## [Entry 2 - Phase Space Reconstruction](Portfolio%20Entries%20(pdf)/PhaseSpaceReconstruction.pdf)
 This entry focuses on Phase Space Reconstruction for EEG data in different epochs.
-An extensive analysis on how to calculate tau and embedding dimension is done, which lays the groundwork for future analyses
+An extensive analysis on how to calculate tau and embedding dimension is done, which lays the groundwork for future analyses.
 
 ## [Entry 3 - Recurrence Quantification Analysis](Portfolio%20Entries%20(pdf)/)
 This entry explores Recurrence Quantification analysis for EEG data over different epochs.
