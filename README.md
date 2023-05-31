@@ -69,7 +69,7 @@ We also explored various metrics derived from MFDFA, providing insights into the
 
 Overall, the fractal module deepened our understanding of fractal patterns and equipped us with tools to analyze and interpret complex data, contributing to broader research in this field.
 
-## [Entry 7 - Entropy](Portfolio%20Entries%20(pdf)/)
+## [Entry 7 - Entropy](Portfolio%20Entries%20(pdf)/From disorder to insight - harnessing entropy.pdf)
 This exploration delves into the realm of entropy analysis, covering Shannon Entropy, Sample Entropy, the impact of different embedding dimensions (Edim), and the correlation between Sample Entropy and MFDFA. Shannon Entropy measures uncertainty in a probability distribution, while Sample Entropy captures complexity in time series data. Analyzing Sample Entropy across different Edim values highlights the importance of choosing the right embedding dimension. Furthermore, investigating the correlation between Sample Entropy and MFDFA reveals potential connections between entropy dynamics and scaling properties. This exploration deepens our understanding of entropy analysis and its application in unraveling patterns and relationships in complex datasets.
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
