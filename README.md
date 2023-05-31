@@ -74,7 +74,7 @@ This exploration delves into the realm of entropy analysis, covering Shannon Ent
 
 Furthermore, investigating the correlation between Sample Entropy and MFDFA reveals potential connections between entropy dynamics and scaling properties. This exploration deepens our understanding of entropy analysis and its application in unraveling patterns and relationships in complex datasets.
 
-Authors: Caterina Ceccato, Anita Vrins, Jos Prinsen, Ethel Pruss
+**Authors:** Caterina Ceccato, Anita Vrins, Jos Prinsen, Ethel Pruss
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
 
