@@ -1,4 +1,4 @@
-# Introduction and dataset description
+# Introduction and Dataset Description
 
 This repository includes a complex systems approach to data analysis. 
 The dataset used was collected by the authors in collaboration with another student during experiments conducted at Tilburg University in fall 2022.
