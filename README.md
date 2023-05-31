@@ -60,7 +60,7 @@ The following questions are addressed:
 - Does the metric of phase synchrony we choose affect whether there is a significant difference or not?
 - Does connectivity look different in different frequency bands or in different regional groupings?
 
-## [Entry 6 - Fractals](Portfolio%20Entries%20(pdf)/)
+## [Entry 6 - Fractals](Portfolio%20Entries%20(pdf)/Fractals.pdf)
 In the fractal module, we focused on understanding and analyzing fractal patterns in data. We explored multifractal behavior using Multifractal Detrended Fluctuation Analysis (MFDFA) and extracted meaningful metrics from the data.
 
 We discovered that the data exhibits scale-free or power-law behavior, indicating complex underlying structures with long-range correlations and self-similarity. By applying MFDFA, we identified multifractal behavior, revealing a wide range of statistical properties across different scales.
