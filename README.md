@@ -15,7 +15,7 @@ Our preprocessing pipeline consisted in
 
 # Power Spectral Density
 
-After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the aplha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
+After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the alpha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
 
 # Portfolio Entries
 
@@ -31,8 +31,15 @@ The following questions are adressed:
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
 ## [Entry 2 - Phase Space Reconstruction](Portfolio%20Entries%20(pdf)/PhaseSpaceReconstruction.pdf)
+This entry focuses on Phase Space Reconstruction for EEG data in different epochs.
+An extensive analysis on how to calculate tau and embedding dimension is done, which lays the groundwork for future analyses
 
 ## [Entry 3 - Recurrence Quantification Analysis](Portfolio%20Entries%20(pdf)/)
+This entry explores Recurrence Quantification analysis for EEG data over different epochs.
+The following methods are explored
+- RQA of the average over channels, for each epoch
+- CRQA of the average channels for 4 pairs of epochs
+- mdCRQA of all the channels for 4 pairs of epochs
 
 ## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Correlation%20in%20EEG%20Data.pdf)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
