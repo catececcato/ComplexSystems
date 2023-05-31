@@ -41,7 +41,7 @@ The following methods are explored:
 - CRQA of the average channels for 4 pairs of epochs
 - mdCRQA of all the channels for 4 pairs of epochs
 
-## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(code)/Correlation_in_EEG_Data.ipynb)
+## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Empyrical_Dynamic_Modeling.pdf)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
 
 The following questions are adressed: 
@@ -51,7 +51,7 @@ The following questions are adressed:
 - How does increasing tp (time points in the future for prediction) affect simplex projection results for EEG data?
 - What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
-## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(pdf)/)
+## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(code)/Correlation_in_EEG_Data.ipynb)
 This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
