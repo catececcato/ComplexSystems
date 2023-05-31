@@ -19,7 +19,7 @@ For some analyses the same data has been formatted in a different way. Epochs of
 
 # Portfolio Entries
 
-## [Entry 1 - Temporal Dynamics of the EEG Engagement Index ](Portfolio%20Entries%20(code)/Temporal%20Dynamics.pdf)
+## [Entry 1 - Temporal Dynamics of the EEG Engagement Index ](Portfolio%20Entries%20(code)/Temporal%20Dynamics.ipynb)
 This entry investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
 
 The following questions are adressed: 
