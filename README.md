@@ -30,9 +30,9 @@ The following questions are adressed:
 
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
-## [Entry 2 - interesting stuff]
+## [Entry 2 - Phase Space Reconstruction](Portfolio%20Entries%20(pdf)/PhaseSpaceReconstruction.pdf)
 
-## [Entry 3 - interesting stuff]
+## [Entry 3 - Recurrence Quantification Analysis](Portfolio%20Entries%20(pdf)/)
 
 ## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Correlation%20in%20EEG%20Data.pdf)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
@@ -47,7 +47,7 @@ The following questions are adressed:
 
 - Section 4: What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
-## [Entry 5 - Correlation in EEG Data]
+## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(pdf)/Correlation%20in%20EEG%20Data.pdf)
 This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
