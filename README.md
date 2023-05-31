@@ -26,7 +26,7 @@ The following questions are adressed:
 
 - Section 1: What are the temporal signatures of the signal?
 
-- Section 2: Are the signals stationary?
+- Section 2: Are the EEG Engagement Index time series stationary?
 
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
@@ -39,7 +39,7 @@ This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data
 
 The following questions are adressed: 
 
-- Section 1: Are the signals stationary? (similarly to module 2, although we are looking at raw signal not the EEG Engagement Index here + recall scores)
+- Section 1: Are the raw EEG data and recall score time series stationary? 
 
 - Section 2: What is the optimal embedding dimension for our EEG data?
 
