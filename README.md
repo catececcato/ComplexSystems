@@ -19,7 +19,7 @@ For some analyses the same data has been formatted in a different way. Epochs of
 
 # Portfolio Entries
 
-## [Entry 1 - Temporal Dynamics of the EEG Engagement Index ](Module2.ipynb)
+## [Entry 1 - Temporal Dynamics of the EEG Engagement Index ](Portfolio%20Entries%20(code)/Temporal%20Dynamics.pdf)
 This entry investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
 
 The following questions are adressed: 
@@ -41,7 +41,7 @@ The following methods are explored
 - CRQA of the average channels for 4 pairs of epochs
 - mdCRQA of all the channels for 4 pairs of epochs
 
-## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Correlation%20in%20EEG%20Data.pdf)
+## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(code)/Correlation_in_EEG_Data.ipynb)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
 
 The following questions are adressed: 
@@ -54,7 +54,7 @@ The following questions are adressed:
 
 - Section 4: What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
-## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(pdf)/Correlation%20in%20EEG%20Data.pdf)
+## [Entry 5 - Correlation in EEG Data](Portfolio%20Entries%20(pdf)/)
 This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
