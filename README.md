@@ -21,6 +21,7 @@ After these steps, we continued our analysis of the data in python. We calculate
 
 ## [Module 2 - Temporal Dynamics of the EEG Engagement Index ](Module2.ipynb)
 This module investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
+
 The following questions are adressed: 
 
 - Section 1: What are the temporal signatures of the signal?
@@ -29,7 +30,27 @@ The following questions are adressed:
 
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
-## [Module x - interesting stuff]
+## [Module 6 - interesting stuff]
+
+## [Module 7 - interesting stuff]
+
+## [Module 8 - interesting stuff]
+
+## [Module 9 - Correlation in EEG Data]
+This module investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
+
+The following questions are addressed:
+
+- Section 1: Is there a difference in connectivity between electrodes based on the experiment condition?
+
+- Section 2: Does the metric of phase synchrony we choose affect whether there is a significant difference or not?
+
+- Section 3: Does connectivity look different in different frequency bands or in different regional groupings?
+
+## [Module 10 - Fractals]
+
+## [Module 11 - Entropy]
+
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
 
