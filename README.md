@@ -17,9 +17,9 @@ Our preprocessing pipeline consisted in
 
 After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the aplha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
 
-# Modules
+# Portfolio Entries
 
-## [Module 2 - Temporal Dynamics of the EEG Engagement Index ](Module2.ipynb)
+## [Entry 1 - Temporal Dynamics of the EEG Engagement Index ](Module2.ipynb)
 This entry investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
 
 The following questions are adressed: 
@@ -30,11 +30,11 @@ The following questions are adressed:
 
 - Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
 
-## [Module 6 - interesting stuff]
+## [Entry 2 - interesting stuff]
 
-## [Module 7 - interesting stuff]
+## [Entry 3 - interesting stuff]
 
-## [Module 8 - Empirical Dynamic Modeling ]
+## [Entry 4 - Empirical Dynamic Modeling ]
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
 
 The following questions are adressed: 
@@ -47,7 +47,7 @@ The following questions are adressed:
 
 - Section 4: What does convergent cross mapping indicate about the relationship between EEG data and recall in our experiment? 
 
-## [Module 9 - Correlation in EEG Data]
+## [Entry 5 - Correlation in EEG Data]
 This entry investigates coordination (also known as functional connectivity in neuroscience literature) between brain regions using EEG Data and phase synchrony metrics. 
 
 The following questions are addressed:
@@ -58,9 +58,9 @@ The following questions are addressed:
 
 - Section 3: Does connectivity look different in different frequency bands or in different regional groupings?
 
-## [Module 10 - Fractals]
+## [Entry 6 - Fractals]
 
-## [Module 11 - Entropy]
+## [Entry 7 - Entropy]
 
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
