@@ -61,9 +61,16 @@ The following questions are addressed:
 - Does connectivity look different in different frequency bands or in different regional groupings?
 
 ## [Entry 6 - Fractals](Portfolio%20Entries%20(pdf)/)
+In the fractal module, we focused on understanding and analyzing fractal patterns in data. We explored multifractal behavior using Multifractal Detrended Fluctuation Analysis (MFDFA) and extracted meaningful metrics from the data.
+
+We discovered that the data exhibits scale-free or power-law behavior, indicating complex underlying structures with long-range correlations and self-similarity. By applying MFDFA, we identified multifractal behavior, revealing a wide range of statistical properties across different scales.
+
+We also explored various metrics derived from MFDFA, providing insights into the data's variability and statistical properties. These metrics enhanced our understanding of the data's complexity and allowed us to quantify its dynamics.
+
+Overall, the fractal module deepened our understanding of fractal patterns and equipped us with tools to analyze and interpret complex data, contributing to broader research in this field.
 
 ## [Entry 7 - Entropy](Portfolio%20Entries%20(pdf)/)
-
+This exploration delves into the realm of entropy analysis, covering Shannon Entropy, Sample Entropy, the impact of different embedding dimensions (Edim), and the correlation between Sample Entropy and MFDFA. Shannon Entropy measures uncertainty in a probability distribution, while Sample Entropy captures complexity in time series data. Analyzing Sample Entropy across different Edim values highlights the importance of choosing the right embedding dimension. Furthermore, investigating the correlation between Sample Entropy and MFDFA reveals potential connections between entropy dynamics and scaling properties. This exploration deepens our understanding of entropy analysis and its application in unraveling patterns and relationships in complex datasets.
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
 
