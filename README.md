@@ -34,7 +34,7 @@ The following questions are adressed:
 
 ## [Entry 3 - interesting stuff]
 
-## [Entry 4 - Empirical Dynamic Modeling ]
+## [Entry 4 - Empirical Dynamic Modeling ](Portfolio Entries (pdf)/Correlation in EEG Data.pdf)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
 
 The following questions are adressed: 
