@@ -41,7 +41,7 @@ The following methods are explored:
 - CRQA of the average channels for 4 pairs of epochs
 - mdCRQA of all the channels for 4 pairs of epochs
 
-## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Empyrical_Dynamic_Modeling.pdf)
+## [Entry 4 - Empirical Dynamic Modeling](Portfolio%20Entries%20(pdf)/Empirical_Dynamic_Modeling.pdf)
 This entry applied empirical dynamic modeling analysis to raw (cleaned) EEG data and recall test scores in order to explore whether there is a non-linear connection between EEG data in a given time window and whether the participant remembered information they were told in that time window.
 
 The following questions are adressed: 
