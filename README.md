@@ -15,7 +15,7 @@ Our preprocessing pipeline consisted in
 
 After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the alpha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
 
-# Alternative data processing
+# Alternative Data Processing
 For some analyses the same data has been formatted in a different way. Epochs of EEG data based on when certain information were given in the story telling task were extracted, and the score in the final test relative to that information was stored. This type of formatting allows for a better analysis over time and for a possible comparison between EEG data and recall test scores, which provide a measure for whether participants were storing the information to memory during a given epoch of EEG data.
 
 # Portfolio Entries
@@ -70,7 +70,11 @@ We also explored various metrics derived from MFDFA, providing insights into the
 Overall, the fractal module deepened our understanding of fractal patterns and equipped us with tools to analyze and interpret complex data, contributing to broader research in this field.
 
 ## [Entry 7 - Entropy](Portfolio%20Entries%20(pdf)/FromDisorderToInsightHarnessingEntropy.pdf)
-This exploration delves into the realm of entropy analysis, covering Shannon Entropy, Sample Entropy, the impact of different embedding dimensions (Edim), and the correlation between Sample Entropy and MFDFA. Shannon Entropy measures uncertainty in a probability distribution, while Sample Entropy captures complexity in time series data. Analyzing Sample Entropy across different Edim values highlights the importance of choosing the right embedding dimension. Furthermore, investigating the correlation between Sample Entropy and MFDFA reveals potential connections between entropy dynamics and scaling properties. This exploration deepens our understanding of entropy analysis and its application in unraveling patterns and relationships in complex datasets.
+This exploration delves into the realm of entropy analysis, covering Shannon Entropy, Sample Entropy, the impact of different embedding dimensions (Edim), and the correlation between Sample Entropy and MFDFA. Shannon Entropy measures uncertainty in a probability distribution, while Sample Entropy captures complexity in time series data. Analyzing Sample Entropy across different Edim values highlights the importance of choosing the right embedding dimension. 
+
+Furthermore, investigating the correlation between Sample Entropy and MFDFA reveals potential connections between entropy dynamics and scaling properties. This exploration deepens our understanding of entropy analysis and its application in unraveling patterns and relationships in complex datasets.
+
+Authors: Caterina Ceccato, Anita Vrins, Jos Prinsen, Ethel Pruss
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
 
