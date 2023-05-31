@@ -17,5 +17,21 @@ Our preprocessing pipeline consisted in
 
 After these steps, we continued our analysis of the data in python. We calculated power spectral density applying the welch method in order to extract data from the aplha, beta and theta power bands for each participant. These powerbands were needed to calculate the EEG engagement index, which we have used as measure of engagement in the experiments. The data about the EEG engagement index over time was then stored in separate csv files (one for each participant, for each condition) in order to be used for further analysis in R. 
 
+# Modules
+
+## [Module 2 - Temporal Dynamics of the EEG Engagement Index ](Comp Sys Module 2 - Temporal Dynamics.ipynb)
+This module investigates the temporal signature as well as stationarity of the EEG Engagement Index over time.
+The following questions are adressed: 
+
+- Section 1: What are the temporal signatures of the signal?
+
+- Section 2: Are the signals stationary?
+
+- Section 3: Does autocorrelation, as measured by ACF peaks, change over time?
+
+## [Module x - blah blah]
 
 _This material was initially created as part of Travis J. Wiltshire's Complex Systems Methods for Cognitive and Data Scientists course at Tilburg University._
+
+# References
+
